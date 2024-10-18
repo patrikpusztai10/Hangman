@@ -85,24 +85,23 @@ public class Hangman {
                 "      |\n" +
                 "=========\n");
 
-        // Dynamically create the underscores based on word length
+       
         String lines = "_".repeat(word.length()).replace("", " ").trim();
         int guess = 0;
 
-        // Game continues until all guesses are used or word is fully revealed
+
         while (guess != 6 && !word.equals("©".repeat(word.length()))) {
             System.out.println("Choose a letter:");
             letter = input.nextLine();
 
-            // Ensure input is a single letter
+
             if (letter.length() != 1) {
                 System.out.println("Please enter a single letter.");
                 continue;
             }
 
-            // Check if the word contains the guessed letter
             if (word.contains(letter)) {
-                // Replace all occurrences of the letter
+
                 for (int i = 0; i < word.length(); i++) {
                     if (word.charAt(i) == letter.charAt(0)) {
                         lines = Found(lines, letter, i);
@@ -111,13 +110,13 @@ public class Hangman {
                 }
                 System.out.println(lines);
             } else {
-                // Wrong guess, increment the guess count
+
                 guess++;
                 System.out.println(wrong_Guesses(guess));
             }
         }
 
-        // Determine the end result
+
         if (guess == 6) {
             System.out.println("GAME OVER!\n");
             System.out.println("The initial word was: " + initial_word);
